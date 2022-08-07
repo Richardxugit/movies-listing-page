@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# movies-listing-page
+A movies listing page written in React.js
 
 ## Available Scripts
 
