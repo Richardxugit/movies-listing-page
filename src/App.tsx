@@ -3,6 +3,8 @@ import { Layout } from "antd";
 import "./App.css";
 import "antd/dist/antd.css";
 
+import MovieCard from "./components/MovieCard";
+
 const { Header, Content } = Layout;
 
 const App = () => {
@@ -14,7 +16,7 @@ const App = () => {
             <img src="assets/logo.svg" alt="logo" />
           </div>
         </Header>
-        <Content className="content">Movies List</Content>
+        <Content className="content"><MovieCard /></Content>
       </Layout>
     </Layout>
   );

@@ -1,0 +1,16 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+  filter:drop-shadow(5px 5px 10px rgb(95, 84, 84))
+}
+
+.button {
+  background-color: #9352b4;
+  border-radius: 1em;
+  width: 10em;
+  margin: auto;
+  margin-top: 1em;
+}
