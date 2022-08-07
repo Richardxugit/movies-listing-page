@@ -1,0 +1,13 @@
+.App {
+  height: 100vh;
+  text-align: center;
+}
+
+.content{
+  background-color: white;
+  padding: 1rem;
+}
+
+.logo{
+  max-width: 10em;
+}
