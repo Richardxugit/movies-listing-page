@@ -6,6 +6,9 @@
 .content{
   background-color: white;
   padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:start;
 }
 
 .logo{

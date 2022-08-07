@@ -1,10 +1,12 @@
 .layout {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-  filter:drop-shadow(5px 5px 10px rgb(95, 84, 84))
+  filter: drop-shadow(5px 5px 10px rgb(95, 84, 84));
+  margin-top: 2em;
+  margin-left: 2em;
 }
 
 .button {
@@ -13,4 +15,10 @@
   width: 10em;
   margin: auto;
   margin-top: 1em;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

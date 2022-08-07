@@ -1,21 +1,42 @@
-import { Card, Button } from "antd";
+import { Card, Button, Image, Typography } from "antd";
+
+import { config } from "../config";
 
 import "./MovieCard.css";
 
 const { Meta } = Card;
 
-const MovieCard = () => {
+interface MovieCardProps {
+  title: string;
+  poster: string;
+  overview: string;
+}
+
+const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
   return (
-    <Card
-      className="card"
-      style={{ width: 240 }}
-      cover={<img alt="example img" src="assets/logo.svg" />}
-    >
-      <span className="layout">
-        <Meta title="This is Title" description="This is Description" />
-        <Button className="button">Read More...</Button>
-      </span>
-    </Card>
+    <div className="card">
+      <Card
+        style={{ width: 300, height: 650 }}
+        cover={<Image src={config.IMAGE_URL + poster} />}
+      >
+        <span className="layout">
+          <Meta
+            title={title}
+            description={
+              <Typography.Paragraph
+                ellipsis={{
+                  rows:3,
+                  expandable: false,
+                }}
+              >
+                {overview}
+              </Typography.Paragraph>
+            }
+          />
+          <Button className="button">Read More...</Button>
+        </span>
+      </Card>
+    </div>
   );
 };
 
