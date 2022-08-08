@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.card {
+.card-container {
   filter: drop-shadow(5px 5px 10px rgb(95, 84, 84));
   margin: 2em 1em 0 1em;
 }

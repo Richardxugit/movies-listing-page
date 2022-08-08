@@ -1,4 +1,5 @@
-import { Card, Button, Image, Typography } from "antd";
+import { Card, Button, Typography } from "antd";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { config } from "../config";
 
@@ -14,10 +15,19 @@ interface MovieCardProps {
 
 const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
   return (
-    <div className="card">
+    <div className="card-container">
       <Card
         style={{ width: 300, height: 650 }}
-        cover={<Image src={config.IMAGE_URL + poster} />}
+        cover={
+          <LazyLoadImage
+            width={300}
+            height={450}
+            effect="black-and-white"
+            alt="This is a post"
+            src={config.IMAGE_URL + poster}
+            loading="lazy"
+          />
+        }
       >
         <span className="layout">
           <Meta
@@ -25,7 +35,7 @@ const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
             description={
               <Typography.Paragraph
                 ellipsis={{
-                  rows:3,
+                  rows: 3,
                   expandable: false,
                 }}
               >
@@ -33,7 +43,11 @@ const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
               </Typography.Paragraph>
             }
           />
-          <Button className="button">Read More...</Button>
+          <Button className="button">
+            <a target="_blank" href="https://www.imdb.com">
+              Read More...
+            </a>
+          </Button>
         </span>
       </Card>
     </div>
