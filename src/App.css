@@ -3,14 +3,32 @@
   text-align: center;
 }
 
-.content{
+.header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  z-index: 1;
+  width: 100%;
+}
+
+.content {
   background-color: white;
-  padding: 1rem;
+  padding: 1em;
+}
+
+.movies-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: center;
+  padding-top: 5em;
 }
 
 .logo{
   max-width: 10em;
+}
+
+.search-bar{
+  width: 20%;
 }
