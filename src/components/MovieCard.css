@@ -5,8 +5,7 @@
 
 .card {
   filter: drop-shadow(5px 5px 10px rgb(95, 84, 84));
-  margin-top: 2em;
-  margin-left: 2em;
+  margin: 2em 1em 0 1em;
 }
 
 .button {
