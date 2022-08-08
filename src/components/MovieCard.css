@@ -10,14 +10,14 @@
 
 .button {
   background-color: #9352b4;
-  border-radius: 1em;
-  width: 10em;
-  margin: auto;
-  margin-top: 1em;
 }
 
-.description {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.toggleButton {
+  margin-left: 2em;
+}
+
+.tag {
+  position: absolute;
+  top: 0.5em;
+  right: 0;
 }

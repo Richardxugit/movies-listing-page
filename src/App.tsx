@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import axios from "axios";
 import { config } from "./config";
 
@@ -8,7 +8,7 @@ import "antd/dist/antd.css";
 
 import MovieCard from "./components/MovieCard";
 import SearchBar from "./components/SearchBar";
-import MovieCardProps from "./components/MovieCard";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 const { Header, Content } = Layout;
 
@@ -16,6 +16,15 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState<string>("");
   const [searchResult, setSearchResult] = useState([]);
+  const [watchedMovies, setWatchedMovies] = useLocalStorage("watchedMovies", []);
+
+  const handleWatchedMoviesOnChange =(id: number) => {
+      setWatchedMovies([...watchedMovies, id]);
+  };
+
+  const checkWatched = (id: number) => {
+    return watchedMovies.includes(id);
+  };
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -37,7 +46,7 @@ const App = () => {
       setSearchResult(searchResult);
     }, 800);
     return () => clearTimeout(delayDebounceFn);
-  }, [searchValue]);
+  }, [searchValue, movies]);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -78,9 +87,12 @@ const App = () => {
                 return (
                   <MovieCard
                     key={movie.id}
+                    id={movie.id}
                     title={movie.title}
                     overview={movie.overview}
                     poster={movie.poster_path}
+                    handleWatchedMoviesOnChange={handleWatchedMoviesOnChange}
+                    checkWatched={checkWatched}
                   />
                 );
               }

@@ -1,4 +1,4 @@
-import { Card, Button, Typography } from "antd";
+import { Card, Button, Typography, Tag } from "antd";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { config } from "../config";
@@ -8,12 +8,22 @@ import "./MovieCard.css";
 const { Meta } = Card;
 
 interface MovieCardProps {
+  id: number;
   title: string;
   poster: string;
   overview: string;
+  handleWatchedMoviesOnChange: (id: number) => void;
+  checkWatched: (id: number) => boolean;
 }
 
-const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
+const MovieCard = ({
+  id,
+  title,
+  poster,
+  overview,
+  handleWatchedMoviesOnChange,
+  checkWatched,
+}: MovieCardProps) => {
   return (
     <div className="card-container">
       <Card
@@ -29,6 +39,9 @@ const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
           />
         }
       >
+        <Tag visible={checkWatched(id)} color="#9352b4" className="tag">
+          Watched
+        </Tag>
         <span className="layout">
           <Meta
             title={title}
@@ -38,16 +51,30 @@ const MovieCard = ({ title, poster, overview }: MovieCardProps) => {
                   rows: 3,
                   expandable: false,
                 }}
+                style={{ textAlign: "justify" }}
               >
                 {overview}
               </Typography.Paragraph>
             }
           />
-          <Button className="button">
-            <a target="_blank" href="https://www.imdb.com">
-              Read More...
-            </a>
-          </Button>
+          <div>
+            <Button className="button" size="middle" shape="round">
+              <a target="_blank" href="https://www.imdb.com" rel="noreferrer">
+                Read More...
+              </a>
+            </Button>
+            {!checkWatched(id) && (
+              <Button
+                size="middle"
+                type="ghost"
+                className="toggleButton"
+                shape="round"
+                onClick={() => handleWatchedMoviesOnChange(id)}
+              >
+                Watched?
+              </Button>
+            )}
+          </div>
         </span>
       </Card>
     </div>
